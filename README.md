@@ -834,3 +834,62 @@ Elastic Load Balancing (ELB)
         - __BEST PRACTICE__: are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term
 
 ### AWS Organizations
+- suppose that your company has multiple AWS accounts
+- This is a service used to consolidate and manage multiple AWS accounts within a central location
+- Helps group tons of AWS accounts according to business functions (HR, Legal, FInance, Engineering etc.) and manage accounts without much pain
+- When you __create an organization__
+    - automatically creates a __root__
+        - the parent container for all the accounts in the organization
+- __Service Control Policies (SCPs)__
+    - centrally control permissions for the accounts in your organization using it
+    - enable you to place restrictions on the AWS services, resources, and individual API actions that __users and roles in each account__ can access
+- Consolidated billing is another feature
+- __Organizational Units__
+    - group accounts into _Organizational Units (OUs)__ to make it easier to manage accounts with similar business or security requirements
+    - When you apply a policy to an OU, all the accounts in the OU automatically inherit the permissions specified in the policy
+    - By organizing separate accounts into OUs, you can more easily isolate workloads or applications that have specific security requirements. For instance, if your company has accounts that can access only the AWS services that meet certain regulatory requirements, you can put these accounts into one OU. Then, you can attach a policy to the OU that blocks access to all other AWS services that do not meet the regulatory requirements.
+- __Example__
+    - Imagine that your company has separate AWS accounts for the finance, information technology (IT), human resources (HR), and legal departments. You decide to consolidate these accounts into a single organization so that you can administer them from a central location. When you create the organization, this establishes the root.
+    - In designing your organization, you consider the business, security, and regulatory needs of each department. You use this information to decide which departments group together in OUs.
+    - The finance and IT departments have requirements that do not overlap with those of any other department. You bring these accounts into your organization to take advantage of benefits such as consolidated billing, but you do not place them into any OUs.
+    - The HR and legal departments need to access the same AWS services and resources, so you place them into an OU together. Placing them into an OU enables you to attach policies that apply to both the HR and legal departments' AWS accounts.
+    - __Even though you have placed these accounts into OUs, you can continue to provide access for users, groups, and roles through IAM__
+    - By grouping your accounts into OUs, you can more easily give them access to the services and resources that they need. You also prevent them from accessing any services or resources that they do not need.
+
+### Compliance
+- you may need to uphold specific standards
+- an audit or inspection will ensure that the company has met those standards
+- __AWS Artifact__
+    - a service that provides on-demand access to AWS security and compliance reports and select online agreements
+    - consists of two main sections
+        - AWS Artifact Agreements
+        - AWS Artifact Reports
+- __AWS Artifact Agreements__
+    - Suppose that your company needs to sign an agreement with AWS regarding your use of certain types of information throughout AWS services. You can do this through AWS Artifact Agreements.
+
+In AWS Artifact Agreements, you can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations. Different types of agreements are offered to address the needs of customers who are subject to specific regulations, such as the Health Insurance Portability and Accountability Act (HIPAA).
+
+AWS Artifact Reports
+Next, suppose that a member of your company’s development team is building an application and needs more information about their responsibility for complying with certain regulatory standards. You can advise them to access this information in AWS Artifact Reports. 
+
+AWS Artifact Reports provide compliance reports from third-party auditors. These auditors have tested and verified that AWS is compliant with a variety of global, regional, and industry-specific security standards and regulations. AWS Artifact Reports remains up to date with the latest reports released. You can provide the AWS audit artifacts to your auditors or regulators as evidence of AWS security controls. 
+
+The following are some of the compliance reports and regulations that you can find within AWS Artifact. Each report includes a description of its contents and the reporting period for which the document is valid. 
+
+
+
+Customer Compliance Center
+The Customer Compliance Center contains resources to help you learn more about AWS compliance. 
+
+In the Customer Compliance Center, you can read customer compliance stories to discover how companies in regulated industries have solved various compliance, governance, and audit challenges.
+
+You can also access compliance whitepapers and documentation on topics such as:
+
+AWS answers to key compliance questions
+
+An overview of AWS risk and compliance
+
+An auditing security checklist
+
+
+Additionally, the Customer Compliance Center includes an auditor learning path. This learning path is designed for individuals in auditing, compliance, and legal roles who want to learn more about how their internal operations can demonstrate compliance using the AWS Cloud.
