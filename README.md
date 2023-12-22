@@ -13,3 +13,4 @@ This repository has my notes from the [__AWS: AWS Cloud Practitioner Essentials_
 - [Module 06 - Security](./module-06-security.md)
 - [Module 07 - Monitoring and Analytics](./module-07-monitoring-and-analytics.md)
 - [Module 08 - Pricing and Support](./module-08-pricing-and-support.md)
+- [Module 09 - Migration and Innovation](./module-09-migration-and-innovation.md)

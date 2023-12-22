@@ -1,0 +1,177 @@
+## Module 9: Migration and Innovation
+Moving from on-premise data centers to AWS cloud
+
+### AWS Cloud Adoption Framework (AWS CAF)
+- Organizes guidance into 6 __Perspectives__ (_areas of focus_)
+    - each perspective addresses a distinct responsibility
+    - so the right people across the organization prepare for the changes ahead
+    - the __Business__, __People__, and __Governance__ Perspectives focus on _business capabilities_
+    - the __Platform__, __Security__, and __Operations__ Perspectives focus on _technical capabilities_
+- __Business Perspective__
+    - ensures that IT aligns with business needs and that IT investments link to key business results
+    - use CAF to create a strong business case for cloud adoption and prioritize cloud adoption initiatives
+    - Common roles
+        - Business managers
+        - Finance managers
+        - Budget owners
+        - Strategy stakeholders
+- __People Perspective__
+    - supports development of an organization-wide change management strategy for successful cloud adoption
+    - use CAF to evaluate organizational structures and roles, new skill and process requirements, and identify gaps
+    - helps prioritize training, staffing, and organizational changes
+    - Common roles
+        - Human resources
+        - Staffing
+        - People managers
+- __Governance Perspective__
+    - focuses on the skills and processes to align IT strategy with business strategy
+    - ensures that you maximize the business value and minimize risks
+    - use CAF to understand how to update the staff skills and processes necessary to ensure business governance in the cloud
+    - Manage and measure cloud investments to evaluate business outcomes
+    - Common roles
+        - Chief Information Officer (CIO)
+        - Program managers
+        - Enterprise architects
+        - Business analysts
+        - Portfolio managers
+- __Platform Perspective__
+    - includes principles and patterns for implementing new solutions on the cloud, and migrating on-premises workloads to the cloud
+    - use a variety of architectural models to understand and communicate the structure of IT systems and their relationships
+    - describe the architecture of the target state environment in detail
+    - Common roles
+        - Chief Technology Officer (CTO)
+        - IT managers
+        - Solutions architects
+- __Security Perspective__
+    - ensures that the organization meets security objectives for visibility, auditability, control, and agility
+    - use CAF to structure the selection and implementation of security controls that meet the organization's needs
+    - Common roles
+        - Chief Information Security Officer (CISO)
+        - IT security managers
+        - IT security analysts
+- __Operations Perspective__
+    - helps you to enable, run, use, operate, and recover IT workloads to the level agreed upon with your business stakeholders
+    - define how day-to-day, quarter-to-quarter, and year-to-year business is conducted
+    - align with and support the operations of the business
+    - CAF helps these stakeholders define current operating procedures and identify the process changes and training needed to implement successful cloud adoption
+    - Common roles
+        - IT operations managers
+        - IT support managers
+- Each perspective is used to uncover gaps in the organization's skills and processes
+    - These gaps act as inputs to create an __AWS CAF Action Plan__ that helps guide the organization for AWS Cloud migration
+
+### Migration Strategies
+- These are 6 most common migration strategies that you can implement when migrating to the cloud
+- __6 Strategies for Migration__
+    - __Rehosting__
+        - __lift-and-shift__
+        - moving applications without changes
+        - eg. a large legacy migration
+            - helps migrate and scale quickly to meet a business case (say, save costs)
+    - __Replatforming__
+        - __lift, tinker, and shift__
+        - making a few cloud optimizations to realize a tangible benefit
+        - optimization is achieved without changing the core architecture of the application
+        - eg. reducing the amount of time you spend managing database instances by migrating to a database-as-a-service platform like Amazon RDS, or migrating the app to a managed platform like Amazon Elastic Beanstalk
+    - __Repurchasing__
+        - moving from a traditional license to a Software-as-a-Service (SaaS) model
+        - eg. a business might choose to implement the repurchasing strategy by migrating from a CRM system to Salesforce.com
+    - __Refactoring/re-architecting__
+        - reimagining how an application is architected and developed by using cloud-native features
+        - driven by a strong business need to add features, scale, or performance that would otherwise be difficult to achieve in the application's existing environment
+        - eg. migrating from a monolithic architecture to a service-oriented (or serverless) architecture to boost agility or improve business continuity
+        - tends to be the most expensive, but may also be the most beneficial
+    - __Retaining__
+        - don't move to AWS Cloud yet!
+        - keeping applications that are critical for the business in the source environment
+        - might include applications that require major refactoring before they can be migrated, or, work that can be postponed until a later time
+    - __Retiring__
+        - don't move to AWS Cloud
+        - in fact, remove applications that are no longer needed even from the source environment!
+
+### AWS Snow Family Members
+- transporting large amounts of data __into__ and __out of__ AWS can take a very long time
+    - eg. A network of 1 Gbps speed moves 1 PB of data about 100 days (and likely longer)
+    - this is both time-consuming, and costly!
+- __AWS Snow Family Members__
+- a collection of physical devices that help to physically transport up to exabytes of data __into__ and __out of__ AWS
+    - different capacity points
+    - include different levels of built-in computing capabilities
+    - optimize for space-constrained or weight-constrained environments
+    - optimize for portability
+    - flexible networking options
+    - data moved to AWS Snow Family devices is automatically encrypted with 256-bit encryption keys that are managed by AWS KMS
+    - once received at the AWS data center, AWS verifies and copies the data (usually an S3 bucket)
+    - once the data migration job is complete and verified, AWS performs a secure software erasure of the device
+- __these devices have computing resources so as to collect and process data at the edge__
+    - they fit into existing server racks at AWS data centers
+    - devices can support Amazon EC2 instances, AWS IoT Greengrass functions, and Kubernetes deployments on Amazon EKS Anywhere
+    - once plugged in on these server racks, you can run EC2 instances on them, cluster them, run lambda functions etc.!
+    - customers usually ship these devices to remote locations where computing is not available but needed
+        - eg. capturing of streams from IoT devices
+        - industrial signalling
+        - image compression
+        - video transcoding
+- __Three types__
+    - __AWS Snowcone__
+        - small, rugged, and secure edge computing and data transfer device
+        - features 2 CPUs, 4 GB of memory, and 8 TB of usable storage
+    - __AWS Snowball__
+        - __Snowball Edge Storage Optimized devices__ 
+            - well-suited for
+                - large-scale data migrations
+                - recurring transfer workflows
+                - local computing with higher capacity needs
+            - provides 40 vCPUs, and 80 GB of RAM, __80TB HDD__ or __210TB NVMe__ capacity for Amazon S3-compatible object storage (the 210TB device only supports data migration use cases)
+        - __Snowball Edge Compute Optimized devices__
+            - provide powerful computing resources
+            - well-suited for
+                - machine learning
+                - full motion video analysis
+                - analytics
+                - local computing stacks
+            - __104 vCPUs__, an __optional NVIDIA Tesla V100 GPU__, __416 GiB of memory__, 28 TB usable NVMe SSD capacity for Amazon S3 compatible storage or EBS-compatible block volumes. Snowball Edge Compute Optimized devices run Amazon EC2 sbe-c and sbe-g instances, which are equivalent to C5, M5a, G3, and P3 instances
+    - __AWS Snowmobile__
+        - an exabyte-scale data transfer service used to move large amounts of data to AWS.
+        - transfer up to __100 petabytes__ of data per Snowmobile, a 45-foot long ruggedized shipping container, pulled by a semi trailer truck
+
+### Innovation with AWS
+- When examining how to use AWS services and innovate, it is important to focus on the desired outcomes. You need to clearly understand
+    - The current state
+    - The desired state
+    - The problems you are trying to solve
+- __Some options__ you might explore in the future as you continue on your cloud journey
+    - __Serverless Applications__
+        - applications that don't require you to provision, maintain, or administer servers
+            - no need to worry about fault tolerance or availability, as AWS handles these
+        - if you design your architecture to trigger Lambda functions to run your code, you can bypass the need to manage a fleet of servers
+        - enables your developers to focus on the core product instead of managing and operating servers
+    - __Artificial Intelligence__
+        - AWS offers a variety of services powered by artificial intelligence (AI).
+            - convert speech to text with __Amazon Transcribe__
+            - discover patterns in text with __Amazon Comprehend__
+            - identify potentially fraudulent online activities with __Amazon Fraud Detector__
+            - Build voice and text chatbots with __Amazon Lex__ - this service forms the core of Alexa!
+    - __Machine Learning__
+        - Traditional Machine Learning (ML) development is complex, expensive, time consuming, and error prone
+        - AWS offers __Amazon SageMaker__, __Amazon Augmented AI (A2I)__ to remove the difficult work - empowers you to build, train, and deploy ML models quickly
+        - __AWS DeepRacer__ - a 1:18 scale race carto test your reinforcement learning models!
+        - use it to analyze data, solve complex problems, and predict outcomes before they happen
+    - __Other types of services__
+        - __IoT services__
+        - __AWS Ground Station__ - satellite communication service
+
+### Resources
+- [AWS Cloud Adoption Framework (AWS CAF)](https://docs.aws.amazon.com/pdfs/whitepapers/latest/overview-aws-cloud-adoption-framework/overview-aws-cloud-adoption-framework.pdf)
+- [6 Strategies for Migrating Applications to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/6-strategies-for-migrating-applications-to-the-cloud/)
+- [AWS Snow Family](https://aws.amazon.com/snow/)
+- [AWS Snowcone](https://aws.amazon.com/snowcone/)
+- [AWS Snowball](https://aws.amazon.com/snowball/)
+- [AWS Snowmobile](https://aws.amazon.com/snowmobile/)
+- [Migrate and Modernize on AWS](https://aws.amazon.com/products/migration-and-transfer/)
+- [A Process for Mass Migrations to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/214-2/)
+- [AWS Cloud Adoption Framework (AWS CAF)](https://aws.amazon.com/cloud-adoption-framework/)
+- [AWS Cloud Essentials - Getting Started Guide](https://aws.amazon.com/getting-started/cloud-essentials/)
+- [AWS Cloud Enterprise Strategy Blog](https://aws.amazon.com/blogs/enterprise-strategy/)
+- [Modernizing with AWS Blog](https://aws.amazon.com/blogs/modernizing-with-aws/)
+- [AWS Customer Stories: Data Center Migration](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23datacenter-migration&awsf.customer-references-industry=*all&awsf.customer-references-use-case=category%23migration-transfer&awsf.language=language%23english)
