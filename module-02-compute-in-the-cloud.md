@@ -1,0 +1,232 @@
+## Module 2: Compute in the Cloud
+- Elastic Compute Cloud (EC2)
+    - compute power using virtual servers (servers that run on top of physical host machines using virtualization technology)
+    - __Multitenancy__
+        - __Hypervisor__ running on the host machines helps share physical resources between different virtual machines
+        - The hypervisor ensures sandboxing of virtual machines and is managed by AWS
+- Advantages
+    - no upfront cost
+    - no delays
+    - you are not tied to the infra once you buy it
+    - grow or shrink capacity
+    - pay for what you use
+    - in EC2 you only for for __running__ instances, not __stopped__ / __terminated__ instances
+
+### Amazon EC2 Instance Types
+- EC2 instance types are optimized for different tasks
+- Consider the specific needs of your workloads and applications
+    - compute
+    - memory
+    - storage capabilities
+    - networking capacity
+- Types of EC2 insrances
+    - General purpose instances
+        - application servers
+        - gaming servers
+        - backend servers for enterprise applications
+        - small and medium databases
+    - Compute optimized instances
+        - like general purpose instances, you can use compute optimized instances for workloads such as web, application, and gaming servers
+        - ideal for high-performance web servers, compute-intensive applications servers, scientific computing, and dedicated gaming servers
+        - batch processing workloads that require processing many transactions in a single group
+    - Memory optimized instances
+        - workloads that process large datasets in memory
+    - Accelerated computing instances
+        - floating-point number calculations
+        - GPU intensive tasks
+        - data pattern matching (these also use hardware accelerators)
+        - game streaming
+        - application streaming
+    - Storage optimized instances
+        - high performance for locally store data
+        - sequential read and write access to large datasets on local storage
+        - distributed file systems
+        - data warehousing applications
+        - high-frequency online transaction processing (OLTP) systems
+        - __Input/output Operations Per Second (IOPS)__ is a metric that measures the performance of a storage device
+            - Storage optimized instances are designed to deliver tens of thousands of low-latency, random IOPS to applications
+
+### EC2 pricing
+__NOTE__: AWS Cost Explorer can analyze your Amazon EC2 usage over the past 7, 30, or 60 days. It provides customized recommendations for Savings Plans.
+
+- _On-Demand_
+    - Pay only for the duration you run it for (could be per hour / second depending on instance type)
+    - ideal for short-term, irregular workloads
+    - No upfront costs or minimum contracts apply
+    - cannot be interrupted. Run continuously until you stop them.
+    - not recommended for workloads that last a year or longer because these workloads can experience greater cost savings using Reserved Instances.
+- _Savings plan_
+    - Needs a commitment for 1 / 3 year term - savings upto 72%
+    - Any usage up to the commitment is charged at the discounted Savings Plan rate (for example, $10 an hour)
+    - Any usage beyond the commitment is charged at regular On-Demand rates
+    - It applies to AWS Lambda and AWS Fargate as well
+- _Reserved Instances_
+    - _Reserved Instances are a __billing discount__ applied to the use of On-Demand Instances_ in your account
+    - You can purchase for a 1-year or 3-year term
+        - Standard Reserved
+        - Convertible Reserved Instances
+            - You have the flexibility to change families, operating system types, and tenancies
+        - Scheduled Reserved Instances for a 1-year term
+    - You realize greater cost savings with the 3-year option
+    - At the end of a Reserved Instance term, you can continue using the Amazon EC2 instance without interruption. However, you are charged On-Demand rates until you terminate the instance, or purchase a new Reserved Instance that matches the instance attributes (instance type, Region, tenancy, and platform).
+    - It does not apply to AWS Lambda and AWS Fargate (As environment for these cannot be inpected)
+- Spot Instances
+    - ideal for workloads
+        - with flexible start and end times
+        - that can withstand interruptions
+            - Suppose that you have a _background processing job that can start and stop as needed_
+    - use unused Amazon EC2 computing capacity and offer you cost savings at up to 90% off of On-Demand prices
+    - If you make a Spot request and Amazon EC2 capacity is available, your Spot Instance launches. However, if you make a Spot request and Amazon EC2 capacity is unavailable, the request is not successful until capacity becomes available.
+    - After you have launched a Spot Instance, if capacity is no longer available or demand for Spot Instances increases, your instance may be interrupted (with a __2 minute notice period__)
+- Dedicated Hosts
+    - physical servers with Amazon EC2 instance capacity that is fully dedicated to your use
+    - You can use your existing __per-socket__, __per-core__, or __per-VM__ __software licenses__ to help maintain license compliance
+    - You can purchase __On-Demand Dedicated Hosts__ and __Dedicated Hosts Reservations__. 
+    - dedicated hosts form the most expensive option in EC2
+
+### Scaling Amazon EC2 (Part 1, Part 2)
+- automatically respond to changing demand by scaling out or in
+    - both __vertical scaling__ (adding resources to existing instances) and horizontal scaling (increasing number of instances) are supported
+    - called Amazon EC2 Auto Scaling
+    - you are able to maintain a greater sense of application availability
+    - Two approaches
+        - __dynamic scaling__ responds to changing demand
+        - __predictive scaling__ automatically schedules the right number of EC2 instances based on predicted demand
+        - Dynamic scaling and predictive scaling can be used together to scale faster
+- you pay for only the resources you use
+- When you create an Auto Scaling Group (ASG)
+    - set the __minimum capacity__, say, 1 EC2 instance
+    - set the __desired capacity__, say, 2 EC2 instances
+        - __Note__: If you do not specify the desired number of EC2 instances in an ASG, the desired capacity defaults to your minimum capacity
+    - set the __maximum capacity__, say 4 EC2 instances.
+
+### Directing Traffic with Elastic Load Balancing (ELB)
+Elastic Load Balancing (ELB)
+    - AWS service that automatically distributes incoming application traffic across multiple resources, such as EC2 instances
+    - acts as a single point of contact for all incoming web traffic to your ASG
+    - as you add or remove EC2 instances in response to the amount of incoming traffic, these requests route to the load balancer first
+    - Although ELB and Auto Scaling are separate services, they work together to help ensure that applications running in EC2 can provide
+        - high performance
+        - high availability
+    - ELB acts as a reverse proxy tp connect multiple frontend instances with multiple backend instances
+        - without ELB you will end up with a bi-partite graph of frontend + backend instances, and auto-scaling requrieemtn would make it difficult to maintain this network
+        - with ELB, all traffic from frontend to backend is routed via the ELB
+
+### Messaging and Queueing
+- Queues help achieve loosely coupled applications
+    - When one application (say receiever) goes down, the other (say sender) still does not fail
+        - it can continue to send messages, and they exist in the queue, till receiver application is up and running again and reads the messages
+- Amazon SQS
+    - Send messages
+    - Store messages
+    - Receive messages
+    - ...At any volume!
+    - reliable and scalable
+- Amazon SNS
+    - similar to SQS
+        - can send messages to services
+    - but it can also send notifications to end users!
+        - mobile push, SMS, email supported
+    - uses a pub-sub model
+    - create SNS topics
+        - a channel for messages to be delivered
+        - subscribers subscribe to the topics and recieve messages published on that topic
+            - basically the message published is __broadcast__ to all subscribers
+    - subscribers can also be SQS queues, Lambda functions, web hooks!
+
+### Monolithic Applications and Microservices
+- Monolothic application
+    - Application with tightly coupled components
+        - databases
+        - servers
+        - user interface
+        - business logic, and so on
+    - if a single component fails, other components fail, and possibly the entire application fails
+- Microservices
+    - application components are loosely coupled
+    - helps maintain application availability when a single component fails, because the functioning components are still communicating with each other
+- Two services facilitate application integration (via microservices approach)
+    - SQS
+    - SNS
+
+### Additional Computer Services
+- With EC2 you need to take care of
+    - patching instances' software
+    - manage scaling instances
+    - architect for high availability
+- __AWS Lambda__ - (__serverless__)
+    - zero administration - all the above are taken care
+    - you do not need to provision or manage these servers
+    - you cannot examine the underlying instances
+    - for event-driven apps
+    - you configure a __trigger__. When the trigger triggers, it runs a __lambda function__ in an AWS managed environment.
+        - You upload your code to Lambda. 
+        - You set your code to trigger from an event source. A event source can be for example,
+            - an AWS service
+            - a mobile applications
+            - an HTTP endpoint
+        - a simple Lambda function might involve automatically resizing uploaded images to the AWS Cloud. In this case, the function triggers when uploading a new image. 
+    - Even with multiple simulatenous triggers (say thousands), AWS Lambda will scale automatically
+        - can adjust the application's capacity by modifying the units of consumptions, such as throughput and memory
+    - It is designed to run code in under 15 minutes
+        - good for web backends, report generation etc.
+        - not good for deep learning (long running tasks)
+    - pay only for the compute time that you consume
+- __AWS Serverless Application Repository (SAR)__
+    - quickly deploy code samples, components, and complete applications for common use cases such as web and mobile backends, event and data processing, logging, monitoring, Internet of Things (IoT), and more
+    - Each application is packaged with an __AWS Serverless Application Model (SAM)__ template that defines the AWS resources used
+    - Use SAM to publish your own applications to SAR and share them within your team, across your organization, or with the community at large
+- __Elastic Container Service (ECS)__, __Elastic Kubernetes Sevice (EKS)__ - Container Services 
+    - Container orchestration tools
+        - Helps manage a cluster of containers
+        - you have to manage possibly hundreds of hosts with thousands of containers. -
+        - monitor memory usage, security, logging, and so on.
+    - Container = __Docker__ container
+        - supports open-source Docker Community Edition
+        - supports subscription-based Docker Enterprise Edition
+    - you get access to underlying environment installed on EC2 instances
+    - additionally you still get efficiency, portability
+    - two modes - Fargate launch type and EC2 launch type
+- __Amazon EC2 Image Builder__
+    - reduces the effort of keeping images up-to-date and secure by providing a simple graphical interface, built-in automation, and AWS-provided security settings
+    - no manual steps for updating an image nor do you have to build your own automation pipeline
+- __AWS Fargate__
+    - Use this if you want to host containerized apps using ECS/EKS but without access to the underlying environment (serverless)
+    - you don't have to provision, configure, and scale clusters of VMs to run containers
+- __Amazon Lightsail__
+    - easiest way to launch and manage a virtual private server
+    - plans include everything you need to jumpstart your project
+        – Virtual Machine
+        - SSD-based storage
+        - data transfer
+        - DNS management
+        - static IP address – for a low, predictable price
+- __AWS App Runner__
+    - fully managed service that makes it easy for developers to quickly deploy containerized web applications and APIs, at scale
+    - builds and deploys the web application and load balances traffic with encryption
+    - scales up or down automatically
+    - rather than thinking about servers or scaling, focus on your application
+- __AWS Batch__
+    - run hundreds of thousands of batch computing jobs
+    - dynamically provisions the optimal quantity and type of compute resources based on the volume and specific resource requirements of the batch jobs submitted
+    - plans, schedules, and runs your batch computing workloads across Amazon EC2 and Spot Instances
+- __AWS Elastic Beanstalk__
+    - easy-to-use service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and Internet Information Services (IIS).
+    - You can simply upload your code, and AWS Elastic Beanstalk automatically handles
+        - deployment, from capacity provisioning
+        - load balancing, and auto scaling
+        - application health monitoring
+    - you retain full control over the AWS resources and can access the underlying resources
+- __AWS Outposts__
+    - bring native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility
+    - Two variants
+        - VMware Cloud allows you to use the same VMware control plane and APIs you use to run your infrastructure
+        - AWS-native variant allows you to use the same exact APIs and control plane you use to run in the AWS Cloud, but on-premises
+- __AWS Wavelength__
+    - infrastructure offering optimized for mobile edge computing applications
+    - embed AWS compute and storage services within communications service providers' (CSP) datacenters at the edge of the 5G network, so application traffic from 5G devices can reach application servers running in Wavelength Zones without leaving the telecommunications network. This avoids the latency that would result from application traffic having to traverse multiple hops across the Internet to reach their destination, enabling customers to take full advantage of the latency and bandwidth benefits offered by modern 5G networks.
+- __VMware Cloud on AWS__ 
+    - an integrated cloud offering jointly developed by AWS and VMware delivering a highly scalable, secure and innovative service that allows organizations to seamlessly migrate and extend their on-premises VMware vSphere-based environments to the AWS Cloud running on next-generation Amazon Elastic Compute Cloud (Amazon EC2) bare metal infrastructure.
+    - ideal for enterprise IT infrastructure and operations organizations looking to migrate their on-premises vSphere-based workloads to the public cloud
+    - brings the broad, diverse and rich innovations of AWS services natively to the enterprise applications running on VMware's compute, storage and network virtualization platforms
+        - integrate AWS infrastructure and platform capabilities such as AWS Lambda, Amazon Simple Queue Service (Amazon SQS), Amazon S3, Elastic Load Balancing, Amazon RDS, Amazon DynamoDB, Amazon Kinesis, and Amazon Redshift, among many others

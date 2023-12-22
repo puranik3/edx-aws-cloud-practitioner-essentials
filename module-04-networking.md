@@ -1,0 +1,122 @@
+## Module 4: Networking
+
+### Connectivity to AWS
+- __Virtual Private Cloud (VPC)__
+    - Logically isolated section of the AWS Cloud
+        - A VPC can span across multiple AZs of a region, but restricted to a single region
+        - resembles a traditional network that you'd operate in your own data center
+        - Resources in the network can be
+            - public: public-facing
+                - eg. load balancer for the frontend application server
+            - private: no internet access
+                - eg. database server for the application
+    - https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html
+    - __subnet__
+        - a public or private grouping of resources in a VPC
+        - group resources into subnets based on security or operational needs
+        - a subnet has a range of IP addresses from the VPC for its resources
+    - you can control what network traffic gets into a VPC
+        - a public website has resources that are accessible by anyone
+        - an enterprise app has only resources that are accessible by an employee logged into the private network
+    - you can define how VPCs communicate with each other across accounts, Availability Zones, or AWS Regions
+    - __Internet Gateway__
+        - if a VPC has publicly accessible resources, it needs an internet gateway attached
+    - __(Virtual) Private Gateway__
+        - if a VPC has _only_ private resources, it needs an private gateway attached
+            - allows only people coming in from an _approved network_ (approved network may for example be an on-premise data center, internal corporate network etc.)
+            - allows to create a __VPN connection__ (_enabling encrypted communication_) between the approved network and the VPC
+            - The VPN is encrypted and secure but is still over the internet, making it susceptible to internet slowdown (network bottlenecks, traffic etc.)
+            - Alternative to VPN is __AWS Direct Connect__
+                - dedicated physical connection between approved network and a VPC
+                - low latency
+                - highest security
+                - meets high regulatory and compliance needs
+    - A VPC may have multiple types of gateways attached for different types of resources (different subnets)
+    - __Transit Gateway__
+        - helps you design and implement networks at scale by acting as a __cloud router__
+        - connects 1000s of VPCs and on-premises networks through a central hub
+- __PrivateLink__
+    - provides private connectivity between VPCs, supported AWS services, and on-premises networks without exposing traffic to the public internet
+    - Interface VPC endpoints, powered by PrivateLink, connect you to services hosted by AWS Partners and supported solutions available in AWS Marketplace
+    - Think of it like AWS Direct Connect but for connecting different VPCs, VPCs to AWS Marketplace applications / AWS services (not sure?!)
+    - eliminates need for internet gateway, NAT (Network Address Translator), or a public IP address for a VPC
+    - simplify network management and security of VPCs without use of firewall rules, proxy devices, or route tables
+    - reduce vulnerabilities to security threats like man-in-the-middle attacks, brute-force etc.
+    - also works with AWS Direct Connect
+    - https://aws.amazon.com/privatelink/
+- __VPC Lattice__
+    - Simplify service-to-service connectivity, security, and monitoring
+        - Connect thousands of services across VPCs and accounts without increasing network complexity (simplify service connectivity at scale)
+        - Improve service-to-service security and support Zero Trust architectures with centralized access controls, authentication, and context-specific authorization
+        - Apply granular traffic controls, such as request-level routing and weighted targets, for blue/green and canary deployments
+        - Monitor and troubleshoot service-to-service communication for request type, traffic volume, errors, response time, and more.
+- __App Mesh__
+    - provides application-level networking so your services can communicate across multiple types of compute infrastructure
+- __API Gateway__
+    - a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale
+    - API types
+        - RESTful APIs
+        - Web socket APIs
+- __Cloud Map__
+    - a cloud resource discovery service
+    - you can define custom names for your application resources, and it maintains the updated location of these dynamically changing resources
+        - register any application resources, such as databases, queues, microservices, and other cloud resources
+    - increases your application availability because your web service always discovers the most up-to-date locations of its resources
+    - checks the health of every IP-based component of your application to make sure the location is up-to-date
+    - development teams don't have to constantly store, track, and update resource name and location information or make changes directly within the application code
+
+### Subnets and Network Access Control Lists
+- Gateway covers only a part of network security
+- AWS tools that cover a range of security concerns
+    - network hardening
+    - application security
+    - user identity
+    - authentication and authorization
+    - DDoS prevention
+    - data integrity
+    - encryption
+- __Network Access Control List (ACL)__
+    - provides __security at the subnet level__
+    - controls which __data packet__ enters/leaves the subnet boundary
+    - each AWS account includes a default network ACL
+        - default network ACL allows all inbound and outbound traffic
+    - when configuring your VPC, you can use your account's default network ACL or create custom network ACLs
+        - for custom network ACLs, all inbound and outbound traffic is denied until you add rules to specify which traffic to allow
+    - _stateless_
+- __Security Group (SG)__
+    - provides security at the __instance-level (EC2)__
+    - controls which __request__ enters/leaves an EC2 instance
+    - multiple Amazon EC2 instances within a subnet can use the same SG or use different SGs
+    - the default SG for an EC2 instance
+        - blocks all inbound traffic
+        - allows all outbound traffic
+    - you can allow traffic based on network protocol, IP address etc.
+    - _stateful_
+        - recognizes a response that returns to an instance after its corresponding request went out
+        - if the request went out, then response is automatically accepted without further checks
+            - this is regardless of inbound SG rules
+
+### Global Networking
+- __DNS server__
+    - when user types website address in the browser, the browser communicates with a DNS server
+    - DNS - phone book of the internet
+    - __DNS resolution__ is the process of translating a domain name to an IP address
+- __Route 53__
+    - AWS' __Domain Name System (DNS)__ Service
+        - reliable way to route end users to internet applications hosted in AWS
+        - connects user to EC2 instances and load balancers
+        - it can also route users to infrastructure outside of AWS
+        - has the ability to manage the DNS records for domain names - you can register new domain names directly in Route 53
+        - transfer DNS records for existing domain names managed by other domain registrars to Route 53 - enables you to manage all of your domain names within a single location
+        - it can use several routing policies to redirect to different endpoints
+            - Latency-based routing
+            - Geolocation DNS
+                - routing based on end user's location
+            - Geoproximity routing
+            - Weighted Round Robin
+- How Amazon Route 53 and Amazon CloudFront deliver content
+    - say, AnyCompany.com application is running on several Amazon EC2 instances. These instances are in an Auto Scaling group that attaches to an Application Load Balancer.
+    - A customer requests data from the application by going to AnyCompany’s website
+    - Amazon Route 53 uses DNS resolution to identify AnyCompany.com's corresponding IP address, 192.0.2.0. This information is sent back to the customer.
+    - The customer's __request is sent to the nearest edge location through Amazon CloudFront__
+    - __Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet to an Amazon EC2 instance__
