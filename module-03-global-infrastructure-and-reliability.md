@@ -85,3 +85,9 @@
     - provides documentation and sample code for each supported programming language
     - supports C++, Java, .NET, and more
     - https://aws.amazon.com/developer/tools/
+
+### Resources
+- [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)
+- [Regions and Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+- [AWS Networking and Content Delivery Blog](https://aws.amazon.com/blogs/networking-and-content-delivery/)
+- [Tools to Build on AWS](https://aws.amazon.com/developer/tools/)

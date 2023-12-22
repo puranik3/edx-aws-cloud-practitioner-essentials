@@ -104,6 +104,7 @@
 - __Route 53__
     - AWS' __Domain Name System (DNS)__ Service
         - reliable way to route end users to internet applications hosted in AWS
+        - it is a __global service__ (not regional)
         - connects user to EC2 instances and load balancers
         - it can also route users to infrastructure outside of AWS
         - has the ability to manage the DNS records for domain names - you can register new domain names directly in Route 53
@@ -120,3 +121,14 @@
     - Amazon Route 53 uses DNS resolution to identify AnyCompany.com's corresponding IP address, 192.0.2.0. This information is sent back to the customer.
     - The customer's __request is sent to the nearest edge location through Amazon CloudFront__
     - __Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet to an Amazon EC2 instance__
+
+### Resources
+- [Amazon Virtual Private Cloud](https://aws.amazon.com/vpc/)
+- [AWS Direct Connect](https://aws.amazon.com/directconnect/)
+- [Control traffic to subnets using network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
+- [Control traffic to your AWS resources using security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
+- [Amazon Route 53](https://aws.amazon.com/route53/)
+- [Networking and Content Delivery on AWS](https://aws.amazon.com/products/networking/)
+- [AWS Networking & Content Delivery Blog](https://aws.amazon.com/blogs/networking-and-content-delivery/)
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [How Amazon VPC works](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)

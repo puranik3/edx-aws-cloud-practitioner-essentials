@@ -212,3 +212,26 @@
 | | Centrally manage the lifecycle of secrets | AWS Secrets Manager |
 | Compliance | No cost, self-service portal for on-demand access to AWS’ compliance reports | AWS Artifact |
 | | Continually audit your AWS usage to simplify risk and compliance assessment | AWS Audit Manager |
+
+### Resources
+- [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)
+- [AWS Identity and Access Management](https://aws.amazon.com/iam/)
+- [AWS account root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html)
+- [IAM user groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html)
+- [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+- [Multi-Factor Authentication (MFA) for IAM](https://aws.amazon.com/iam/features/mfa/)
+- [AWS Organizations](https://aws.amazon.com/organizations/)
+- [Service control policies (SCPs)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+- [AWS Artifact](https://aws.amazon.com/artifact/)
+- [Customer Compliance Center](https://aws.amazon.com/compliance/customer-center/)
+- [AWS Shield](https://aws.amazon.com/shield/)
+- [AWS Key Management Service](https://aws.amazon.com/kms/)
+- [AWS WAF](https://aws.amazon.com/waf/)
+- [Web access control lists (web ACLs)](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html)
+- [Amazon Inspector](https://aws.amazon.com/inspector/)
+- [Amazon GuardDuty](https://aws.amazon.com/guardduty/)
+- [Security, Identity, and Compliance on AWS](https://aws.amazon.com/products/security/)
+- [Whitepaper: Introduction to AWS Security](https://docs.aws.amazon.com/whitepapers/latest/introduction-aws-security/welcome.html)
+- [Whitepaper: Amazon Web Services - Overview of Security Processes](https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-overview-security-processes/aws-overview-security-processes.pdf)
+- [AWS Security Blog](https://aws.amazon.com/blogs/security/)
+- [AWS Compliance](https://aws.amazon.com/compliance/)

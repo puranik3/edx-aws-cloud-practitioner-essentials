@@ -230,3 +230,16 @@ Elastic Load Balancing (ELB)
     - ideal for enterprise IT infrastructure and operations organizations looking to migrate their on-premises vSphere-based workloads to the public cloud
     - brings the broad, diverse and rich innovations of AWS services natively to the enterprise applications running on VMware's compute, storage and network virtualization platforms
         - integrate AWS infrastructure and platform capabilities such as AWS Lambda, Amazon Simple Queue Service (Amazon SQS), Amazon S3, Elastic Load Balancing, Amazon RDS, Amazon DynamoDB, Amazon Kinesis, and Amazon Redshift, among many others
+
+### Resources
+- [Amazon EC2](https://aws.amazon.com/ec2/)
+- [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)
+- [AWS Lambda](https://aws.amazon.com/lambda/)
+- [Amazon Elastic Container Service](https://aws.amazon.com/ecs/)
+- [Docker](https://www.docker.com/)
+- [Compute on AWS](https://aws.amazon.com/products/compute/)
+- [AWS Compute Blog](https://aws.amazon.com/blogs/compute/)
+- [AWS Compute Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html)
+- [Hands-On Tutorials: Compute](https://aws.amazon.com/getting-started/hands-on/)
+- [Category Deep Dive: Serverless](https://aws.amazon.com/getting-started/decision-guides/modern-apps-strategy-on-aws-how-to-choose/)
+- [AWS Customer Stories: Serverless](https://aws.amazon.com/solutions/case-studies/browse-customer-success-stories/?customer-references-cards.sort-by=item.additionalFields.sortDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-industry=*all&awsf.customer-references-use-case=*all&awsf.language=language%23english&awsf.customer-references-segment=*all&awsf.content-type=*all&awsf.customer-references-product=*all&customer-references-cards.q=serverless&customer-references-cards.q_operator=AND)

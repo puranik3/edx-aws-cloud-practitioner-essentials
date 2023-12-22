@@ -60,3 +60,17 @@
     - the green check indicates the number of items for which it detected __no problems__
     - the orange triangle represents the number of __recommended investigations__
     - Tte red circle represents the number of __recommended actions__
+
+### Resources
+- [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/)
+- [Use Amazon CloudWatch metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html)
+- [Using Amazon CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
+- [Using Amazon CloudWatch dashboards](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html)
+- [AWS CloudTrail](https://aws.amazon.com/cloudtrail/)
+- [Logging Insights events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+- [AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/)
+- [Management and Governance on AWS](https://aws.amazon.com/products/management-and-governance/)
+- [Monitoring and Observability](https://aws.amazon.com/cloudops/monitoring-and-observability)
+- [Configuration, Compliance, and Auditing](https://aws.amazon.com/cloudops/compliance-and-auditing)
+- [AWS Management & Governance Blog](https://aws.amazon.com/blogs/mt/)
+- [Whitepaper: AWS Governance at Scale](https://d1.awsstatic.com/whitepapers/Security/AWS_Governance_at_Scale.pdf)

@@ -45,3 +45,11 @@ While selecting a cloud stratgy, factors a company should consider (non-exhausti
 
 ### AWS Customer Stories / Real-life case-studies
 https://aws.amazon.com/solutions/case-studies/innovators/
+
+### Resources
+- [AWS glossary](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html)
+- [Whitepaper: Overview of Amazon Web Services](https://d0.awsstatic.com/whitepapers/aws-overview.pdf)
+- [AWS Fundamentals: Overview](https://aws.amazon.com/getting-started/cloud-essentials/)
+- [What is cloud computing?](https://aws.amazon.com/what-is-cloud-computing/)
+- [Types of cloud computing](https://aws.amazon.com/types-of-cloud-computing/)
+- [Cloud computing with AWS](https://aws.amazon.com/what-is-aws/)

@@ -31,6 +31,7 @@
         - metadata contains information about what the data is, how it is used, the object size, and so on
         - key is the object's unique identifier
     - when you modify a file in block storage, only the pieces that are changed are updated. When a file in object storage is modified, the __entire object is updated__.
+    - is a regional service, but bucket names are globally unique
     __Features__
         - offers unlimited storage space
         - maximum file size for an object is 5 TB
@@ -264,3 +265,30 @@
 
 - https://aws.amazon.com/getting-started/decision-guides/databases-on-aws-how-to-choose/
 - https://aws.amazon.com/products/databases/learn/#Getting_started_tutorials
+
+### Resources
+- [Amazon EC2 instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
+- [Amazon Elastic Block Store](https://aws.amazon.com/ebs/)
+- [Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+- [Amazon S3](https://aws.amazon.com/s3/)
+- [Amazon S3 Storage Classes](https://aws.amazon.com/s3/storage-classes/)
+- [Amazon Elastic File System](https://aws.amazon.com/efs/)
+- [Amazon Relational Database Service](https://aws.amazon.com/rds/)
+- [Amazon Aurora](https://aws.amazon.com/rds/aurora/)
+- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/)
+- [Amazon Redshift](https://aws.amazon.com/redshift/)
+- [AWS Database Migration Service](https://aws.amazon.com/dms/)
+- [AWS Database Migration Service Documentation](https://docs.aws.amazon.com/dms/)
+- [Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/)
+- [Amazon Neptune](https://aws.amazon.com/neptune/)
+- [Amazon Quantum Ledger Database](https://aws.amazon.com/qldb/)
+- [Amazon Managed Blockchain](https://aws.amazon.com/managed-blockchain/)
+- [Amazon ElastiCache](https://aws.amazon.com/elasticache/)
+- [Amazon DynamoDB Accelerator (DAX)](https://aws.amazon.com/dynamodb/dax/)
+- [Cloud Storage on AWS](https://aws.amazon.com/products/storage/)
+- [AWS Storage Blog](https://aws.amazon.com/blogs/storage/)
+- [Hands-On Tutorials: Storage](https://aws.amazon.com/getting-started/hands-on/?awsf.getting-started-category=category%23storage%7Ccategory%23databases&awsf.getting-started-content-type=content-type%23hands-on%7Ccontent-type%23guide%7Ccontent-type%23tutorial&getting-started-all.sort-by=item.additionalFields.content-latest-publish-date&getting-started-all.sort-order=desc)
+- [AWS Database Migration Service](https://aws.amazon.com/dms/)
+- [Databases on AWS](https://aws.amazon.com/products/databases/)
+- [Category Deep Dive: Databases](https://aws.amazon.com/getting-started/decision-guides/databases-on-aws-how-to-choose/)
+- [AWS Database Blog](https://aws.amazon.com/blogs/database/)
