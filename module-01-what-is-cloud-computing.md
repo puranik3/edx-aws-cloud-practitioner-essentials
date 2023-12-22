@@ -1,4 +1,5 @@
 ## Module 1
+- Coffee shop analogy for explaining AWS cloud services
 
 ### What is Cloud Computing?
 Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. Instead of buying, owning, and maintaining physical data centers and servers, you can access technology services, such as computing power, storage, and databases, on an as-needed basis from a cloud provider like Amazon Web Services (AWS).

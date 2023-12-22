@@ -11,3 +11,4 @@ This repository has my notes from the [__AWS: AWS Cloud Practitioner Essentials_
 - [Module 04 - Networking](./module-04-networking.md)
 - [Module 05 - Storage and Databases](./module-05-storage-and-databases.md)
 - [Module 06 - Security](./module-06-security.md)
+- [Module 07 - Monitoring and Analytics](./module-07-monitoring-and-analytics.md)
