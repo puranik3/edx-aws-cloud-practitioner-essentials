@@ -1,8 +1,8 @@
 # AWS: AWS Cloud Practitioner Essentials
-https://www.edx.org/learn/amazon-web-services-aws/amazon-web-services-aws-cloud-practitioner-essentials
+Course link - https://www.edx.org/learn/amazon-web-services-aws/amazon-web-services-aws-cloud-practitioner-essentials
 
 ## About
-This repository has my notes from the __AWS: AWS Cloud Practitioner Essentials__ course on edX.
+This repository has my notes from the [__AWS: AWS Cloud Practitioner Essentials__](https://www.edx.org/learn/amazon-web-services-aws/amazon-web-services-aws-cloud-practitioner-essentials) course on edX.
 
 ## Table of contents
 - [Module 01 - What is Cloud Computing](./module-01-what-is-cloud-computing.md)
