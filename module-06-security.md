@@ -235,3 +235,4 @@
 - [Whitepaper: Amazon Web Services - Overview of Security Processes](https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-overview-security-processes/aws-overview-security-processes.pdf)
 - [AWS Security Blog](https://aws.amazon.com/blogs/security/)
 - [AWS Compliance](https://aws.amazon.com/compliance/)
+- [AWS Acceptable Use Policy](https://aws.amazon.com/aup/)

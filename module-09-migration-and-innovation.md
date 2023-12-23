@@ -60,6 +60,16 @@ Moving from on-premise data centers to AWS cloud
 - Each perspective is used to uncover gaps in the organization's skills and processes
     - These gaps act as inputs to create an __AWS CAF Action Plan__ that helps guide the organization for AWS Cloud migration
 
+
+### Migration Process
+- These are generally the 5 phases in the cloud migration process
+    - Opportunity Evaluation
+    - Portfolio Discovery and Planning
+    - Application Design
+    - Migration & Validation
+    - Operation
+- https://aws.amazon.com/blogs/enterprise-strategy/214-2/
+
 ### Migration Strategies
 - These are 6 most common migration strategies that you can implement when migrating to the cloud
 - __6 Strategies for Migration__
@@ -161,16 +171,32 @@ Moving from on-premise data centers to AWS cloud
         - __IoT services__
         - __AWS Ground Station__ - satellite communication service
 
+### Other services
+- __AWS DataSync__
+    - secure, online service that automates and accelerates moving data between on premises and AWS Storage services. DataSync can copy data between Network File System (NFS) shares, Server Message Block (SMB) shares, Hadoop Distributed File Systems (HDFS), self-managed object storage, AWS Snowcone, Amazon S3 buckets, Amazon EFS file systems etc.
+    - https://aws.amazon.com/datasync
+- __AWS Transfer Family__
+    - seamlessly migrate, automate, and monitor file transfer workflows into and out of Amazon S3 and Amazon EFS using the __SFTP__, __FTPS__, and __FTP__ protocols.
+    - quickly and securely transfer files between your partners, vendors, and customers, into and out of Amazon S3, using the AS2 protocol
+    - __SFTP connector__ simplifies copying data between remote SFTP servers and Amazon S3
+    - https://aws.amazon.com/aws-transfer-family
+- __AWS Application Migration Service__
+    - Move and improve your on-premises and cloud-based applications
+    - Migrate applications from any source infrastructure that runs a supported OS
+    - Modernize applications during migration with options such as disaster recovery and OS or license conversion
+    - Maintain normal business operations throughout the application replication process
+
 ### Resources
+- [AWS Cloud Adoption Framework (AWS CAF)](https://aws.amazon.com/cloud-adoption-framework/)
 - [AWS Cloud Adoption Framework (AWS CAF)](https://docs.aws.amazon.com/pdfs/whitepapers/latest/overview-aws-cloud-adoption-framework/overview-aws-cloud-adoption-framework.pdf)
+- [Considering a Mass Migration to the Cloud?](https://aws.amazon.com/blogs/enterprise-strategy/considering-a-mass-migration-to-the-cloud/)
 - [6 Strategies for Migrating Applications to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/6-strategies-for-migrating-applications-to-the-cloud/)
+- [A Process for Mass Migrations to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/214-2/)
 - [AWS Snow Family](https://aws.amazon.com/snow/)
 - [AWS Snowcone](https://aws.amazon.com/snowcone/)
 - [AWS Snowball](https://aws.amazon.com/snowball/)
 - [AWS Snowmobile](https://aws.amazon.com/snowmobile/)
 - [Migrate and Modernize on AWS](https://aws.amazon.com/products/migration-and-transfer/)
-- [A Process for Mass Migrations to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/214-2/)
-- [AWS Cloud Adoption Framework (AWS CAF)](https://aws.amazon.com/cloud-adoption-framework/)
 - [AWS Cloud Essentials - Getting Started Guide](https://aws.amazon.com/getting-started/cloud-essentials/)
 - [AWS Cloud Enterprise Strategy Blog](https://aws.amazon.com/blogs/enterprise-strategy/)
 - [Modernizing with AWS Blog](https://aws.amazon.com/blogs/modernizing-with-aws/)

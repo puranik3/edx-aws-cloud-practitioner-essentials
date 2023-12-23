@@ -172,7 +172,6 @@
                     - Cost-optimization
                     - Sustainability
 
-
 ### AWS Marketplace
 - a digital catalog that includes thousands of software listings from independent software vendors
 - find, test, and buy software that runs on AWS
@@ -223,4 +222,5 @@
 - [Whitepaper: How AWS Pricing Works](https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf)
 - [Whitepaper: Introduction to AWS Economics](https://d1.awsstatic.com/whitepapers/introduction-to-aws-cloud-economics-final.pdf)
 - [AWS Support](https://aws.amazon.com/premiumsupport/)
+- [Compare AWS Support Plans](https://aws.amazon.com/premiumsupport/)
 - [AWS Knowledge Center](https://repost.aws/knowledge-center)
