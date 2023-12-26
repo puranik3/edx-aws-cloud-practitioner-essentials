@@ -15,6 +15,7 @@
         - a public or private grouping of resources in a VPC
         - group resources into subnets based on security or operational needs
         - a subnet has a range of IP addresses from the VPC for its resources
+        - a subnet can span across AZs (a subnet logically resides in 1 AZ only)
     - you can control what network traffic gets into a VPC
         - a public website has resources that are accessible by anyone
         - an enterprise app has only resources that are accessible by an employee logged into the private network
